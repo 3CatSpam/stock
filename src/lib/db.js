@@ -1,7 +1,9 @@
 import { Database } from "bun:sqlite";
 
-const db = new Database(process.env.BDD_SQLITE_PATH, {
-  create: true
+const dbPath = process.env.BDD_SQLITE_PATH ?? "/Users/laggyo/Desktop/taff/stock/data/stock.sqlite";
+
+const db = new Database(dbPath, {
+  readwrite: true
 });
 db.run("PRAGMA journal_mode = WAL");
 
